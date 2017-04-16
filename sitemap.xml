@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://bswearingen.com/blog/bike-directional-system/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://bswearingen.com/about/</loc>
     <lastmod>2017-04-14T00:00:00+00:00</lastmod>
   </url>
@@ -18,13 +23,25 @@
   
   <url>
     <loc>http://bswearingen.com/</loc>
-    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bswearingen.com/tags/backpack/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bswearingen.com/tags/bike/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://bswearingen.com/blog/</loc>
-    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -38,6 +55,18 @@
   </url>
   
   <url>
+    <loc>http://bswearingen.com/tags/idea/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bswearingen.com/tags/motivation/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://bswearingen.com/projects/</loc>
     <lastmod>2015-08-19T20:29:37-07:00</lastmod>
     <priority>0</priority>
@@ -45,6 +74,7 @@
   
   <url>
     <loc>http://bswearingen.com/tags/</loc>
+    <lastmod>2017-04-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
