@@ -13,20 +13,20 @@
 
     <meta property="twitter:site" content="@BenSwearingen">
 
-<meta property="twitter:title" content="Shibboleth">
+<meta property="twitter:title" content="Shibboleth: The Tech">
 
     <meta property="twitter:card" content="summary">
     <meta property="twitter:image" content="http://bswearingen.com/img/social_banner.png">
 
-<meta property="twitter:description" content="Identifying far right Redditors by word choice.">
+<meta property="twitter:description" content="The guts inside.">
 
 <title>
 
 
-      - Shibboleth 
+      - Shibboleth: The Tech 
 
 </title>
-<link rel="canonical" href="http://bswearingen.com/blog/shibboleth/">
+<link rel="canonical" href="http://bswearingen.com/blog/robo-insides/">
 
 
 <link rel="stylesheet" href="http://bswearingen.com/css/main.v1.0.0.css">
@@ -111,13 +111,13 @@
                 <div class="title-container">
                     <div class="page-heading">
 
-    Shibboleth
+    Shibboleth: The Tech
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Tue Apr 25 2017 00:00:00 UTC">Apr 25, 2017</div>
+                    <div class="date" title="Wed Apr 26 2017 00:00:00 UTC">Apr 26, 2017</div>
                     
                         
                     
@@ -141,68 +141,69 @@
             <div class="markdown">
                 
     
-    <blockquote>
-<p><em>The Gileadites captured the fords of the Jordan leading to Ephraim, and whenever a survivor of Ephraim said, “Let me cross over,” the men of Gilead asked him, “Are you an Ephraimite?” If he replied, “No,” they said, “All right, say ‘Shibboleth.’” If he said, “Sibboleth,” because he could not pronounce the word correctly, they seized him and killed him at the fords of the Jordan. Forty-two thousand Ephraimites were killed at that time.</em></p>
+    
 
-<ul>
-<li>Judges 12:5-6</li>
-</ul>
-</blockquote>
+<p><a href="http://bswearingen.com/blog/shibboleth/"><strong>In my last post</strong></a> I said that I wrote a &ldquo;a simple Reddit bot to crawl through users’ post histories on demand, letting me know when and where they’re using far right shibboleths.&rdquo; Technically speaking, that&rsquo;s not 100% true. My robot is actually just a script running every ten minutes that parses a user&rsquo;s 1000 most recent comments.</p>
 
-<p><br></p>
+<h3 id="praw">PRAW</h3>
 
-<blockquote>
-<p>As time goes on and he is subjected to more leftist bullshit, he will take the red pill. Still, cuckoldry is disappointing.</p>
+<p>The <a href="https://praw.readthedocs.io/en/latest/">Python Reddit API Wrapper</a> is, as the name says, a Python wrapper for the Reddit API. It makes developing a simple Reddit bot extremely easy. This block of code creates an instance of a Reddit object, checks all unread messages, and if the message is from me, runs a check on the user.
+<pre><code class="python">import praw
+reddit = praw.Reddit(client_id=os.environ[&lsquo;REDDIT_ID&rsquo;],
+                     client_secret=os.environ[&lsquo;REDDIT_SECRET&rsquo;],
+                     password=os.environ[&lsquo;REDDIT_PASS&rsquo;],
+                     user_agent=os.environ[&lsquo;REDDIT_AGENT&rsquo;],
+                     username=os.environ[&lsquo;REDDIT_USER&rsquo;])
+messages = reddit.inbox.unread(mark_read=True);
+for rMessage in messages:
+    rMessage.mark_read()
+    if rMessage.author == &ldquo;bswearin&rdquo; and rMessage.subject != &lsquo;comment reply&rsquo;:
+        try:
+            if rMessage.subject == &lsquo;username mention&rsquo;:
+                parent = reddit.comment(rMessage).parent()
+                CheckUser(parent.author, rMessage)
+            else:
+                CheckUser(reddit.redditor(rMessage.body), rMessage)
+        except:
+            rMessage.reply(&lsquo;Error parsing: /u/&rsquo; + rMessage.body)</code></pre></p>
 
-<ul>
-<li>Anonymous redditor #1</li>
-</ul>
-</blockquote>
+<h3 id="checking-users">Checking Users</h3>
 
-<p><br></p>
+<p>Most of the interesting stuff happens in the actual user check. To start, I break the giant list of slurs and shibboleths (not included in this post) into those that are single words and those that are multiple words. These are going to be checked for in different ways.</p>
 
-<blockquote>
-<p>Well, to clarify I voted for my liberal MP as I preferred them over the other choices. Also, I supported the Liberals due to the field my wife works in.</p>
+<pre><code class="python">multi_word_slurs = [slur for slur in slurs if ' ' in slur]
+single_word_slurs = [slur for slur in slurs if ' ' not in slur]
+</code></pre>
 
-<p>Now, absolutely I am anti Muslim. I&rsquo;m a White Nationalist who opposes Multiculturalism.</p>
+<p>After establishing our shibboleths, we loop through all the available comments (Reddit limits it to 1000) and start processing. First, we remove quotes by deleting all lines that start with the &lsquo;&gt;&rsquo; character. Then we strip out any leading white space that might have been moved to the front of the post.</p>
 
-<ul>
-<li>Anonymous redditor #2</li>
-</ul>
-</blockquote>
+<pre><code class="python">for comment in redditorSuspect.comments.new(limit=None):
+    quoteFree = re.sub(r">.*\n", "", comment.body).strip('#\n \t')
+</code></pre>
 
-<p><br></p>
+<p>After the comment is free from quotes, we start building a set of all shibboleths that it contains. A straight substring check is used to add in multi-word shibboleths, as they&rsquo;re specific enough that an accidental match is unlikely.</p>
 
-<p>I spend too much time on Reddit. Even worse, I read the comments. While the comments on Reddit have had issues for years, it feels like this past year has been particularly bad. With the Trump candidacy and now presidency, the extreme, far right subset of the Reddit population has become increasingly vocal. Oftentimes these users will alternate between outright trolling and bad-faith &ldquo;debating&rdquo;. I found myself engaging with them too often because I&rsquo;m a sucker. After spending some time arguing, I&rsquo;d take some time to go through their post history to see what kind of people I was arguing with, and whether it was worth it. The vast majority of the time, the shibboleths or outright bigotry present there would have been enough to make me question engaging with them in the first place.</p>
+<p>Then we check the comment for echo parentheses.</p>
 
-<p>In a modern context, a &ldquo;shibboleth&rdquo; is a word or phrase that can be used to distinguish an in-group from an out-group. Jargon, in-jokes, and shared cultural memories can all serve as shibboleths, demonstrating that the person using them is properly a part of the in-group. With the semi-fractured nature of the Internet, we can even view the memes that a person uses as a type of shibboleth. If someone posts about having a &ldquo;<a href="https://mic.com/articles/155688/vegan-cheese-might-soon-be-called-gary-thanks-to-one-epic-viral-facebook-rant">grilled Gary sandwich</a>,&rdquo; the odds are better than average that the poster is a vegan. It&rsquo;s a fairly safe leap to make.</p>
+<p>Finally, we strip the punctuation, split the quote free comment into individual words, and check against our set of single word shibboleths.</p>
 
-<p>This same logic can be applied in a much more serious way to the memes and word-choice of the altright. If someone posts frequently about multiculturalism, white nationalism, and red pills, it&rsquo;s a fair bet that they&rsquo;re an engaged member in an altright space. In order to make my own life easier, I spent a few evenings writing a simple Reddit bot to crawl through users&rsquo; post histories on demand, letting me know when and where they&rsquo;re using far right shibboleths. For whatever reason, some people think this was a bad idea:</p>
+<pre><code class="python">contained = []
+# Check against multi-word slurs, as they're unique enough to just do a string compare
+contained.extend([slur for slur in multi_word_slurs if slur in quoteFree.lower()])
+# Check against echo parentheses 
+if('(((' in quoteFree and ')))' in quoteFree):
+    contained.extend(['(((',')))'])
+# Strip the punctuation, split the comment into single words, check against all our single word slurs
+contained.extend([slur for slur in single_word_slurs if slur in quoteFree.translate(translator).split()])
+</code></pre>
 
-<blockquote>
-<p>The really shocking thing here is how a vegan doesn&rsquo;t know humor when he/she sees it. /s</p>
+<p>For the full code, <a href="https://github.com/bswearingen/ThisBotFindsFascists">check out the repo on GitHub.</a></p>
 
-<p>I&rsquo;m not going to dig through your post history to try to find something to take out of context and indict you with because I&rsquo;m not pathetic. Grow up.</p>
+<h3 id="heroku">Heroku</h3>
 
-<ul>
-<li>Anonymous redditor #3</li>
-</ul>
-</blockquote>
+<p>To keep the bot up and running at no cost to me, I&rsquo;ve uploaded it to Heroku where the Heroku scheduler is set to run the script every ten minutes.</p>
 
-<p>Here, in all of it&rsquo;s contextual glory is the joke:
-<center>
-    <blockquote class="imgur-embed-pub" lang="en" data-id="jCCjvXD"><a href="//imgur.com/jCCjvXD">Trash panda will take care of you when you&#39;re sick.</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-</center></p>
-
-<blockquote>
-<p>I love the Jewy way he rubs his hands after he gives you the tissue. It&rsquo;s as though he&rsquo;s thinking &ldquo;I&rsquo;m a good boy, yes? Now give me shekels.&rdquo;</p>
-
-<ul>
-<li>Anonymous redditor #3</li>
-</ul>
-</blockquote>
-
-<p>Are you tired of the process of digging through someone&rsquo;s post history to find something to take out of context and indict them with? Grow up. Automate it; <a href="http://bswearingen.com/blog/robo-insides/">the technical details on automating the process are only a click away.</a></p>
+<p>This is one of my first pieces of technical writing. If you notice any problems with the writing or my code, <a href="https://twitter.com/BenSwearingen">let me know on Twitter</a> or <a href="https://github.com/bswearingen/ThisBotFindsFascists/issues">submit an issue on the repo.</a></p>
 
 
                 <br>
