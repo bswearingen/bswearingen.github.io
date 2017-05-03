@@ -6,7 +6,7 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 16 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 May 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://bswearingen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Backpack</title>
       <link>http://bswearingen.com/tags/backpack/</link>
-      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://bswearingen.com/tags/backpack/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>Bike</title>
       <link>http://bswearingen.com/tags/bike/</link>
-      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://bswearingen.com/tags/bike/</guid>
       <description></description>
@@ -59,7 +59,7 @@
     <item>
       <title>Idea</title>
       <link>http://bswearingen.com/tags/idea/</link>
-      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://bswearingen.com/tags/idea/</guid>
       <description></description>
@@ -80,6 +80,15 @@
       <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>http://bswearingen.com/tags/motivation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Osmand</title>
+      <link>http://bswearingen.com/tags/osmand/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://bswearingen.com/tags/osmand/</guid>
       <description></description>
     </item>
     

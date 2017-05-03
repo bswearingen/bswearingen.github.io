@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bike on </title>
-    <link>http://bswearingen.com/tags/bike/</link>
-    <description>Recent content in Bike on </description>
+    <title>Osmand on </title>
+    <link>http://bswearingen.com/tags/osmand/</link>
+    <description>Recent content in Osmand on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 02 May 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bswearingen.com/tags/bike/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://bswearingen.com/tags/osmand/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>http://bswearingen.com/blog/directional-system-android/</guid>
       <description>I haven&amp;rsquo;t tested this very thoroughly, so this post is going to mostly stick to generalities.
 My goal for the &amp;ldquo;direction&amp;rdquo; part of the backpack direction system was to do as little work as possible. The interesting parts of this project, for me, were in conveying those directions to a user. The actual challenge of getting directions from point A to point B isn&amp;rsquo;t one that I have much interest in solving.</description>
-    </item>
-    
-    <item>
-      <title>Arriving without dying.</title>
-      <link>http://bswearingen.com/blog/bike-directional-system/</link>
-      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://bswearingen.com/blog/bike-directional-system/</guid>
-      <description>How can I get somewhere I&amp;rsquo;ve never been, while not negatively impacting my safety as a cyclist?
-I try to be a safe biker. I wear my helmet. I use lights. I don&amp;rsquo;t look at my phone. I never, ever wear headphones. I realize that biking, even in a city with as much bike infrastructure as Montreal, has some inherent dangers, so I do my best to make sure that I&amp;rsquo;m not limiting myself by blocking off what I&amp;rsquo;m hearing.</description>
     </item>
     
   </channel>
