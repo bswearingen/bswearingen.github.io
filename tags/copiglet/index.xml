@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copiglet on </title>
+    <link>http://bswearingen.com/tags/copiglet/</link>
+    <description>Recent content in Copiglet on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 10 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bswearingen.com/tags/copiglet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CoPiglet Update: Hardware</title>
+      <link>http://bswearingen.com/blog/copiglet-update/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://bswearingen.com/blog/copiglet-update/</guid>
+      <description>Progress has slowed, and likely won&amp;rsquo;t be getting faster any time soon, and that&amp;rsquo;s OK.
+My last blog post on what I&amp;rsquo;m now calling the CoPiglet (like copilot, but a pig, get it?) focused on the Android application. I&amp;rsquo;ve held off on posting a follow-up post focusing on the hardware present in the backpack, because it&amp;rsquo;s been slowly starting to undergo some major changes.
+The Present The current hardware in the backpack is:</description>
+    </item>
+    
+  </channel>
+</rss>
