@@ -4142,7 +4142,7 @@ input, select, textarea {
 	}
 	
 	p.details {
-		text-align: center;
+		text-align: left;
 	}
 	
 	a.collapsible {
