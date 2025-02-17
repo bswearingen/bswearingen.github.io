@@ -1,6 +1,7 @@
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps"
 import { scaleQuantile } from "d3-scale";
 import { Legend } from "./Legend"
+import geographyUrl from "./assets/Territoires_RSS_2024.json"
 
 export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     if(!data || data.length === 0 || !date) return null;
@@ -42,7 +43,7 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
                         [800, 800]
                     ]}
                 >
-                    <Geographies geography="src/assets/Territoires_RSS_2024.json">
+                    <Geographies geography={geographyUrl}>
                         {({ geographies }) =>
                         geographies.map(geo => {
                             const cur = data.find(s => {
