@@ -1,0 +1,49 @@
+/* Base styles */
+:root {
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--background-color);
+}
+
+:root {
+    /* Combination #221 */
+    --background-color_1: #b6bfc1;
+    --text-color: #111314;
+    --error-color: #a62c37;
+
+    /* Combination #149 */
+    --yellow: #d6b43e;
+    --orange: #f37420;
+    --green: #112f2c;
+
+    /* Monochrome */
+    --light: #ffffff;
+    --medium-light: #b6bfc1;
+    --medium-dark: #34454c;
+    --dark: #111314;
+}
+
+/* Semantic colors */
+:root {
+  --background-color: var(--light);
+  --button-background: var(--medium-light);
+  --button-background-pressed: var(--medium-dark);
+  --focus-ring-color: var(--dark);
+  --text-color-disabled: var(--medium-light);
+  --text-color-placeholder: var(--medium-light);
+  --border-color: var(--medium-dark);
+  --border-color-pressed: var(--dark);
+  --border-color-disabled: var(--medium-light);
+  --field-background: var(--medium-light);
+  --field-text-color: var(--dark);
+  --overlay-background: var(--medium-light);
+  --highlight-background: var(--medium-dark);
+  --highlight-background-pressed: var(--dark);
+  --highlight-background-invalid: var(--error-color);
+  --highlight-foreground: var(--light);
+  --highlight-overlay: var(--light);
+  --invalid-color: var(--error-color);
+  --invalid-color-pressed: var(--error-color);
+}
+
