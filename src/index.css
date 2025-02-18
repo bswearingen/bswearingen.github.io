@@ -7,6 +7,7 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: var(--text-color);
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -29,7 +30,7 @@
   flex-direction: column;
   align-items: top;
   outline-style: solid;
-  outline-color: var(--medium-dark);
+  outline-color: var(--button-background-pressed);
   padding: .3rem;
 }
 
@@ -56,7 +57,7 @@
 .slider-group {
   width: fit-content;
   outline-style: solid;
-  outline-color: var(--medium-dark);
+  outline-color: var(--button-background-pressed);
   padding: 1rem;
   margin: .3rem;
 }
@@ -90,7 +91,7 @@
 .map-container {
   max-height: 50vh;
   outline-style: solid;
-  outline-color: var(--medium-dark);
+  outline-color: var(--button-background-pressed);
 }
 
 .legend {
@@ -102,7 +103,7 @@
   min-width: fit-content;
   max-height: fit-content;
   outline-style: solid;
-  outline-color: var(--medium-light);
+  outline-color: var(--overlay-background);
 }
 
 .legend-entry {
@@ -143,5 +144,5 @@
 }
 
 .recharts-dot {
-  fill: var(--dark);
+  fill: var(--orange);
 }

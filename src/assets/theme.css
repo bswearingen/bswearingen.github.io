@@ -9,7 +9,7 @@
 :root {
     /* Combination #221 */
     --background-color_1: #b6bfc1;
-    --text-color: #111314;
+    
     --error-color: #a62c37;
 
     /* Combination #149 */
@@ -26,6 +26,8 @@
 
 /* Semantic colors */
 :root {
+  --accent-color: var(--green);
+  --text-color: var(--dark);
   --background-color: var(--light);
   --button-background: var(--medium-light);
   --button-background-pressed: var(--medium-dark);
@@ -38,12 +40,38 @@
   --field-background: var(--medium-light);
   --field-text-color: var(--dark);
   --overlay-background: var(--medium-light);
-  --highlight-background: var(--medium-dark);
-  --highlight-background-pressed: var(--dark);
+  --highlight-background: var(--accent-color);
+  --highlight-background-pressed: var(--orange);
   --highlight-background-invalid: var(--error-color);
   --highlight-foreground: var(--light);
   --highlight-overlay: var(--light);
   --invalid-color: var(--error-color);
   --invalid-color-pressed: var(--error-color);
+}
+
+@media (prefers-color-scheme: dark){
+  :root {
+    --accent-color: var(--yellow);
+    --text-color: var(--light);
+    --background-color: var(--dark);
+    --button-background: var(--medium-dark);
+    --button-background-pressed: var(--medium-light);
+    --focus-ring-color: var(--light);
+    --text-color-disabled: var(--medium-dark);
+    --text-color-placeholder: var(--medium-dark);
+    --border-color: var(--medium-light);
+    --border-color-pressed: var(--light);
+    --border-color-disabled: var(--medium-dark);
+    --field-background: var(--medium-dark);
+    --field-text-color: var(--light);
+    --overlay-background: var(--medium-dark);
+    --highlight-background: var(--accent-color);
+    --highlight-background-pressed: var(--orange);
+    --highlight-background-invalid: var(--error-color);
+    --highlight-foreground: var(--dark);
+    --highlight-overlay: var(--dark);
+    --invalid-color: var(--error-color);
+    --invalid-color-pressed: var(--error-color);
+  }
 }
 
