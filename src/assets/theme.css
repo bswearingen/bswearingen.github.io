@@ -32,11 +32,11 @@
   --button-background: var(--medium-light);
   --button-background-pressed: var(--medium-dark);
   --focus-ring-color: var(--dark);
-  --text-color-disabled: var(--medium-light);
+  --text-color-disabled: var(--medium-dark);
   --text-color-placeholder: var(--medium-light);
   --border-color: var(--medium-dark);
   --border-color-pressed: var(--dark);
-  --border-color-disabled: var(--medium-light);
+  --border-color-disabled: var(--light);
   --field-background: var(--medium-light);
   --field-text-color: var(--dark);
   --overlay-background: var(--medium-light);
@@ -57,11 +57,11 @@
     --button-background: var(--medium-dark);
     --button-background-pressed: var(--medium-light);
     --focus-ring-color: var(--light);
-    --text-color-disabled: var(--medium-dark);
+    --text-color-disabled: var(--medium-light);
     --text-color-placeholder: var(--medium-dark);
     --border-color: var(--medium-light);
     --border-color-pressed: var(--light);
-    --border-color-disabled: var(--medium-dark);
+    --border-color-disabled: var(--dark);
     --field-background: var(--medium-dark);
     --field-text-color: var(--light);
     --overlay-background: var(--medium-dark);

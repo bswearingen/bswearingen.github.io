@@ -30,14 +30,16 @@ CustomTooltip.propTypes = {
 
 export function SpotlightPane( { data, selectedRegion, sliderPosition, setSliderPosition, setIsPlaying, setSelectedRegion }){
     const [isMouseInSpotlight, setIsMouseInSpotlight] = useState(false);
-    if(!selectedRegion) return null;
+    if(!data || data.length === 0) return null;
 
     const style = window.getComputedStyle(document.body);
     const accentColor = style.getPropertyValue('--accent-color');
     const orangeColor = style.getPropertyValue('--orange');
 
+    const filterID = selectedRegion ? selectedRegion[0] : 99;
+    const title = selectedRegion ? selectedRegion[1] : "Québec";
     const region_data = data.filter(s => {
-        return s.id === selectedRegion[0];
+        return s.id === filterID;
     }).sort((a,b) => a.date - b.date);
 
     return (
@@ -46,8 +48,9 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                 <div className="spotlight-title">
                     <Button
                         onPress={() => {setSelectedRegion(null);}}
+                        isDisabled={!selectedRegion}
                     >✖</Button>
-                    <h2>{selectedRegion[1]}</h2>
+                    <h2>{title}</h2>
                 </div>
                 <ResponsiveContainer width={"99%"} height={300}>
                     <AreaChart 

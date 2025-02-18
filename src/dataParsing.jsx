@@ -16,7 +16,7 @@ export function convertDailyHospitalizationData(day){
    let result = [];
    const date = day["Date"]
    for (const [key, value] of Object.entries(day)){
-    if (key === "Date" || key === "ACT_Total_RSS99"){
+    if (key === "Date" || key === "_full_text" || key === "_id" ){
         continue;
     } else{
         const numeric_value = value ? Number(value) : NaN;
