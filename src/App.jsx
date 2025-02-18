@@ -45,7 +45,6 @@ function App() {
     }
   }, [range]);
 
-  // TODO: Move slider into header so that it can be grouped and styled with header buttons
   return (
     <>
       <Header

@@ -14,15 +14,12 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     const colorScale = scaleQuantile()
     .domain(data.map(d => d.hospitalizations))
     .range([
-      "#ffedea",
-      "#ffcec5",
-      "#ffad9f",
-      "#ff8a75",
-      "#ff5533",
-      "#e2492d",
-      "#be3d26",
-      "#9a311f",
-      "#782618"
+      "#fef0d9",
+      "#fdd49e",
+      "#fdbb84",
+      "#fc8d59",
+      "#e34a33",
+      "#b30000"
     ]);
 
     return (
@@ -30,7 +27,7 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
             <ComposableMap
                 projection="geoMercator"
                 projectionConfig={{
-                center: [-70, 54.8], // TODO: Lock the max at this center/scale
+                center: [-70, 54.8],
                 scale: 1475
                 }}
                 width={800}
