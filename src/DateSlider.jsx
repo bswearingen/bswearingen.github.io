@@ -37,7 +37,7 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
             value={sliderIndex}
             onChange={(value) => {
                 setIsPlaying(false);
-                setSliderPosition(value);
+                if(!isNaN(value)) setSliderPosition(value);
             }}
         >
             <SliderTrack>
