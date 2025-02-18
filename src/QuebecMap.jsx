@@ -23,7 +23,7 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     };
 
     const colorScale = scaleQuantile()
-    .domain(data.map(d => d.hospitalizations))
+    .domain(data.filter(d => d.id != 99).map(d => d.hospitalizations))
     .range([
       "#fee5d9",
       "#fcbba1",
