@@ -19,7 +19,7 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
     const [isMouseInSpotlight, setIsMouseInSpotlight] = useState(false);
     const region_data = data.filter(s => {
         return s.id === selectedRegion[0];
-    }).sort().reverse();
+    }).sort((a,b) => a.date - b.date);
 
     return (
         <>
