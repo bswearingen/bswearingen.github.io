@@ -1,6 +1,19 @@
 import { Button, CalendarCell, CalendarGrid, DateInput, DateRangePicker, DateSegment, Dialog, Group, Heading, Popover, RangeCalendar, Text} from 'react-aria-components';
 import { DateSlider } from "./DateSlider";
 import { parseDate, today } from "@internationalized/date";
+import PropTypes from 'prop-types';
+
+Header.propTypes = {
+    dateRange: PropTypes.array,
+    language: PropTypes.string,
+    range: PropTypes.object,
+    sliderIndex: PropTypes.number,
+    setLanguage: PropTypes.func,
+    setRange: PropTypes.func,
+    setSliderPosition: PropTypes.func,
+    isPlaying: PropTypes.bool,
+    setIsPlaying: PropTypes.func
+}
 
 export function Header({ dateRange, language, range, sliderIndex, setLanguage, setRange, setSliderPosition, isPlaying, setIsPlaying }) {
     const title = language === "english" ? "Number of COVID hospitalizations for: " : "Nombre d'hospitalisations liées à la COVID au ";
