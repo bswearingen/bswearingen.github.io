@@ -1,6 +1,15 @@
 import { useRef, useEffect } from "react";
 import { Button, ToggleButton, Slider, SliderTrack, SliderThumb } from "react-aria-components";
+import PropTypes from 'prop-types';
 
+DateSlider.propTypes = {
+    isPlaying: PropTypes.bool,
+    language: PropTypes.string,
+    sliderIndex: PropTypes.number,
+    sliderMax: PropTypes.number,
+    setIsPlaying: PropTypes.func,
+    setSliderPosition: PropTypes.func
+};
 export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIsPlaying, setSliderPosition }){
     const speed = useRef(100);
     const advance = useRef(1);
@@ -49,13 +58,13 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
                 className="slider-play-controls"
             >
                 <ToggleButton
-                    onPress={e => {
+                    onPress={() => {
                         setIsPlaying(cur => !cur);
                     }}
                     isSelected={isPlaying}
                 >⏯</ToggleButton>
                 <Button
-                    onPress={e => {
+                    onPress={() => {
                         setIsPlaying(false);
                         setSliderPosition(0);
                     }}

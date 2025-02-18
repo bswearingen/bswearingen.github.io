@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { convertHistoricalHospitalizationData } from "./dataParsing.jsx"
 import { QuebecMap } from './QuebecMap.jsx';
 import { SpotlightPane } from './SpotlightPane.jsx';
-import { DateSlider } from './DateSlider.jsx';
 import { today } from '@internationalized/date';
 import { Header } from './Header.jsx';
 
@@ -43,7 +42,7 @@ function App() {
     } catch (error) {
       console.error(error.message);
     }
-  }, [range]);
+  }, [range, errorText]);
 
   return (
     <>

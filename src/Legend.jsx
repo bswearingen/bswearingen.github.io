@@ -1,3 +1,9 @@
+import PropTypes from 'prop-types';
+
+Legend.propTypes = {
+    scale: PropTypes.object,
+}
+
 export function Legend( { scale }){
     let legend_text = ["0"];
     const quantiles = scale.quantiles();

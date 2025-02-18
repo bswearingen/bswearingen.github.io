@@ -2,6 +2,14 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import { scaleQuantile } from "d3-scale";
 import { Legend } from "./Legend"
 import geographyUrl from "./assets/Territoires_RSS_2024.json"
+import PropTypes from 'prop-types';
+
+QuebecMap.propTypes = {
+    data: PropTypes.array, 
+    date: PropTypes.date,
+    regionSelector: PropTypes.func, 
+    selectedRegion: PropTypes.number
+}
 
 export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     if(!data || data.length === 0 || !date) return null;
@@ -10,7 +18,6 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
         regionSelector([Number(properties["RSS_code"]), properties["RSS_nom"]]);
     };
 
-    // TODO: Find a purposeful color scale
     const colorScale = scaleQuantile()
     .domain(data.map(d => d.hospitalizations))
     .range([

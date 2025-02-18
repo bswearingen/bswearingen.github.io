@@ -1,8 +1,18 @@
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { Button } from 'react-aria-components';
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-const CustomTooltip = ({active, payload, label, sliderPosition}) => {
+SpotlightPane.propTypes = {
+    data: PropTypes.array, 
+    selectedRegion: PropTypes.number,
+    sliderPosition: PropTypes.number,
+    setSliderPosition: PropTypes.func,
+    setIsPlaying: PropTypes.func,
+    setSelectedRegion: PropTypes.func
+}
+
+const CustomTooltip = ({active, payload, label}) => {
     if (active && payload && payload.length) {
         return (
           <div className="custom-tooltip">
@@ -13,10 +23,16 @@ const CustomTooltip = ({active, payload, label, sliderPosition}) => {
       }
 }
 
+CustomTooltip.propTypes = {
+    active: PropTypes.bool, 
+    payload: PropTypes.array,
+    label: PropTypes.string
+}
+
 export function SpotlightPane( { data, selectedRegion, sliderPosition, setSliderPosition, setIsPlaying, setSelectedRegion }){
+    const [isMouseInSpotlight, setIsMouseInSpotlight] = useState(false);
     if(!selectedRegion) return null;
 
-    const [isMouseInSpotlight, setIsMouseInSpotlight] = useState(false);
     const region_data = data.filter(s => {
         return s.id === selectedRegion[0];
     }).sort((a,b) => a.date - b.date);
