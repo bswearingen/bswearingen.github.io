@@ -8,12 +8,16 @@ QuebecMap.propTypes = {
     data: PropTypes.array, 
     date: PropTypes.date,
     regionSelector: PropTypes.func, 
-    selectedRegion: PropTypes.number
+    selectedRegion: PropTypes.object
 }
 
 export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     if(!data || data.length === 0 || !date) return null;
 
+    const style = window.getComputedStyle(document.body);
+    const mediumDarkColor = style.getPropertyValue('--medium-dark');
+    const mediumLightColor = style.getPropertyValue('--medium-light');
+    
     const handleGeographyClick = (event, properties) => {
         regionSelector([Number(properties["RSS_code"]), properties["RSS_nom"]]);
     };
@@ -21,12 +25,12 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
     const colorScale = scaleQuantile()
     .domain(data.map(d => d.hospitalizations))
     .range([
-      "#fef0d9",
-      "#fdd49e",
-      "#fdbb84",
-      "#fc8d59",
-      "#e34a33",
-      "#b30000"
+      "#fee5d9",
+      "#fcbba1",
+      "#fc9272",
+      "#fb6a4a",
+      "#de2d26",
+      "#a50f15"
     ]);
 
     return (
@@ -48,36 +52,42 @@ export function QuebecMap( { data, date, regionSelector, selectedRegion }){
                     ]}
                 >
                     <Geographies geography={geographyUrl}>
-                        {({ geographies }) =>
-                        geographies.map(geo => {
-                            const cur = data.find(s => {
-                                return  s.date.getFullYear() === date.getFullYear() &&
-                                        s.date.getMonth() === date.getMonth() &&
-                                        s.date.getDate() === date.getDate() &&
-                                        s.id === Number(geo.properties.RSS_code);
+                        {({ geographies }) => {
+                            if(selectedRegion){
+                                // Selected region should be painted last so the border color shows
+                                let index = geographies.findIndex(g => Number(g.properties.RSS_code) === selectedRegion[0])
+                                geographies.push(geographies.splice(index, 1)[0]);
+                            }
+                            return geographies.map(geo => {
+                                const cur = data.find(s => {
+                                    return  s.date.getFullYear() === date.getFullYear() &&
+                                            s.date.getMonth() === date.getMonth() &&
+                                            s.date.getDate() === date.getDate() &&
+                                            s.id === Number(geo.properties.RSS_code);
+                                });
+                                let isSelectedRegion = selectedRegion && Number(geo.properties.RSS_code) === selectedRegion[0];                       
+                                return (
+                                    <Geography
+                                        key={geo.rsmKey}
+                                        geography={geo}
+                                        fill={cur ? colorScale(cur.hospitalizations) : "#EEE"}
+                                        stroke={isSelectedRegion ? mediumLightColor: mediumDarkColor}
+                                        onClick={e => handleGeographyClick(e, geo.properties, cur.hospitalizations)}
+                                        style={{
+                                            default: {
+                                                outline: 'none'
+                                            },
+                                            hover: {
+                                                outline: 'none'
+                                            },
+                                            pressed: {
+                                                outline: 'none'
+                                            }
+                                        }}
+                                    />
+                                );
                             });
-                            let isSelectedRegion = selectedRegion && Number(geo.properties.RSS_code) === selectedRegion[0];                       
-                            return (
-                                <Geography
-                                    key={geo.rsmKey}
-                                    geography={geo}
-                                    fill={cur ? colorScale(cur.hospitalizations) : "#EEE"}
-                                    stroke={isSelectedRegion ? "#111314": null}
-                                    onClick={e => handleGeographyClick(e, geo.properties, cur.hospitalizations)}
-                                    style={{
-                                        default: {
-                                            outline: 'none'
-                                        },
-                                        hover: {
-                                            outline: 'none'
-                                        },
-                                        pressed: {
-                                            outline: 'none'
-                                        }
-                                    }}
-                                />
-                            );
-                        })}
+                        }}
                     </Geographies>
                 </ZoomableGroup>
             </ComposableMap>

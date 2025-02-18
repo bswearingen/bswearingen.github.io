@@ -1,4 +1,4 @@
-import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { Button } from 'react-aria-components';
 import { useState } from "react";
 import PropTypes from 'prop-types';
@@ -16,8 +16,7 @@ const CustomTooltip = ({active, payload, label}) => {
     if (active && payload && payload.length) {
         return (
           <div className="custom-tooltip">
-            <p className="label">{`${label} : ${payload[0].value}`}</p>
-            <p className="desc">Anything you want can be displayed here.</p>
+            <h3 className="label">{`${label} : ${payload[0].value}`}</h3>
           </div>
         );
       }
@@ -32,6 +31,10 @@ CustomTooltip.propTypes = {
 export function SpotlightPane( { data, selectedRegion, sliderPosition, setSliderPosition, setIsPlaying, setSelectedRegion }){
     const [isMouseInSpotlight, setIsMouseInSpotlight] = useState(false);
     if(!selectedRegion) return null;
+
+    const style = window.getComputedStyle(document.body);
+    const accentColor = style.getPropertyValue('--accent-color');
+    const orangeColor = style.getPropertyValue('--orange');
 
     const region_data = data.filter(s => {
         return s.id === selectedRegion[0];
@@ -56,6 +59,7 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                             if(Object.keys(e).length > 0){
                                 setSliderPosition(e.activeTooltipIndex);
                                 setIsPlaying(false);
+                                setIsMouseInSpotlight(false);
                             }
                         }}
                     >
@@ -68,12 +72,11 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                             }
                             defaultIndex={isMouseInSpotlight ? null : sliderPosition}
                         />
-                        <Legend />
                         <Area
                             type="monotone"
                             dataKey="hospitalizations"
-                            stroke="#34454c"
-                            fill="#b6bfc1"
+                            stroke={orangeColor}
+                            fill={accentColor}
                             isAnimationActive={false}
                         >
                         </Area>
