@@ -57,22 +57,20 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
-      <div className='map-spotlight-container'>
-        <QuebecMap
-          data={data}
-          date={dateRange[sliderIndex]}
-          regionSelector={setSelectedRegion}
-          selectedRegion={selectedRegion}/>
-        <SpotlightPane
-          data={data}
-          date={dateRange[sliderIndex]}
-          selectedRegion={selectedRegion}
-          sliderPosition={sliderIndex}
-          setSliderPosition={setSliderIndex}
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          setSelectedRegion={setSelectedRegion}/>
-      </div>
+      <QuebecMap
+        data={data}
+        date={dateRange[sliderIndex]}
+        regionSelector={setSelectedRegion}
+        selectedRegion={selectedRegion}/>
+      <SpotlightPane
+        data={data}
+        date={dateRange[sliderIndex]}
+        selectedRegion={selectedRegion}
+        sliderPosition={sliderIndex}
+        setSliderPosition={setSliderIndex}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        setSelectedRegion={setSelectedRegion}/>
     </>
   )
 }
