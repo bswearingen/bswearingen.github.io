@@ -52,39 +52,41 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                     >✖</Button>
                     <h2>{title}</h2>
                 </div>
-                <ResponsiveContainer width={"99%"} height={300}>
-                    <AreaChart 
-                        data={region_data} 
-                        margin={{ top: 20, right: 10, }}
-                        onMouseMove={() => {setIsMouseInSpotlight(true);}}
-                        onMouseLeave={() => {setIsMouseInSpotlight(false);}}
-                        onClick={(e) => {
-                            if(Object.keys(e).length > 0){
-                                setSliderPosition(e.activeTooltipIndex);
-                                setIsPlaying(false);
-                                setIsMouseInSpotlight(false);
-                            }
-                        }}
-                    >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="date_str"/>
-                        <YAxis />
-                        <Tooltip 
-                            content={
-                                <CustomTooltip/>
-                            }
-                            defaultIndex={isMouseInSpotlight ? null : sliderPosition}
-                        />
-                        <Area
-                            type="monotone"
-                            dataKey="hospitalizations"
-                            stroke={orangeColor}
-                            fill={accentColor}
-                            isAnimationActive={false}
+                <div className='spotlight-graph'>
+                    <ResponsiveContainer width="99%" height="99%">
+                        <AreaChart 
+                            data={region_data} 
+                            margin={{ top: 20, right: 10, }}
+                            onMouseMove={() => {setIsMouseInSpotlight(true);}}
+                            onMouseLeave={() => {setIsMouseInSpotlight(false);}}
+                            onClick={(e) => {
+                                if(Object.keys(e).length > 0){
+                                    setSliderPosition(e.activeTooltipIndex);
+                                    setIsPlaying(false);
+                                    setIsMouseInSpotlight(false);
+                                }
+                            }}
                         >
-                        </Area>
-                    </AreaChart>
-                </ResponsiveContainer>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date_str"/>
+                            <YAxis />
+                            <Tooltip 
+                                content={
+                                    <CustomTooltip/>
+                                }
+                                defaultIndex={isMouseInSpotlight ? null : sliderPosition}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="hospitalizations"
+                                stroke={orangeColor}
+                                fill={accentColor}
+                                isAnimationActive={false}
+                            >
+                            </Area>
+                        </AreaChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
         </>
     );

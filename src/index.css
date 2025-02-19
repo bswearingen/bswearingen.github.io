@@ -5,6 +5,8 @@
 @import "./assets/Select.css";
 @import "./assets/theme.css";
 
+/* TODO: Get the sizing on these elements right, currently not working for
+phones in landscape */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
@@ -16,12 +18,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body {
+  height: 96vh;
+  margin: 2vh 1vw 2vh 1vw;
+}
+
 .header {
   max-width: fit-content;
   max-height: fit-content;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
   gap: 1rem;
 }
 
@@ -36,18 +50,14 @@
 
 .header-meta-controls {
   display: flex;
-  align-items: top;
   padding: .3rem;
-}
-
-.header-meta-controls > .react-aria-DateRangePicker{
-  justify-self: right;
+  justify-content:space-around;
 }
 
 .header-meta-controls > button {
   margin-right: .5rem;
   min-width: 6rem;
-  max-height: fit-content;
+  height: 100%;
 }
 
 .header-title {
@@ -126,12 +136,16 @@
   margin-top: 1rem;
   outline-style: solid;
   max-width: 97vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .spotlight-title {
   display: flex;
   flex-direction: row;
   outline-style: solid;
+  height: fit-content;
 }
 
 .spotlight-title button {
@@ -141,8 +155,39 @@
 
 .spotlight-title h2 {
   margin: .3rem .3rem 0.3rem .3rem;
+  align-self: center;
+}
+
+.spotlight-graph {
+  flex: 1;
+  height: 3vh;
 }
 
 .recharts-dot {
   fill: var(--orange);
+}
+
+@media only screen and (max-width: 600px) {
+  .header-title {
+    font-size: small;
+  }
+
+  .spotlight-title h2{
+    font-size: small;
+  }
+
+  .slider-controls button {
+    min-height: 2rem;
+    height: 2rem;
+    line-height: 1rem;
+  }
+
+  .label {
+    font-size: smaller;
+  }
+
+  body {
+    height: 96vh;
+    margin: 2vh 3vw 2vh 3vw;
+  }
 }
