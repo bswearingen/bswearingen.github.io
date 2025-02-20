@@ -29,11 +29,17 @@ body {
   margin: 2vh 1vw 2vh 1vw;
 }
 
+.header-map-group {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
 .header {
-  max-width: fit-content;
+  max-width:min-content;
   max-height: fit-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   padding-bottom: 1rem;
   gap: 1rem;
@@ -96,6 +102,7 @@ body {
 
 .map-legend-container {
   display: flex;
+  flex: 1;
 }
 
 .map-container {
@@ -160,6 +167,7 @@ body {
 
 .spotlight-graph {
   flex: 1;
+  min-height: 100px;
   height: 3vh;
 }
 
@@ -189,5 +197,26 @@ body {
   body {
     height: 96vh;
     margin: 2vh 3vw 2vh 3vw;
+  }
+
+  .header-map-group{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .header-map-group{
+    flex: 2;
+  }
+  .map-legend-container{
+    flex: 1;
+  }
+
+  .map-container{
+    flex: 1;
+    max-height: 65vh;
+  }
+  .spotlight-pane {
+    flex: 1;
   }
 }

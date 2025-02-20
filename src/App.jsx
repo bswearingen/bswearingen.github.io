@@ -46,22 +46,25 @@ function App() {
 
   return (
     <>
-      <Header
-        dateRange={dateRange}
-        language={language}
-        range={range}
-        sliderIndex={sliderIndex}
-        setRange={setRange}
-        setLanguage={setLanguage}
-        setSliderPosition={setSliderIndex}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-      />
-      <QuebecMap
-        data={data}
-        date={dateRange[sliderIndex]}
-        regionSelector={setSelectedRegion}
-        selectedRegion={selectedRegion}/>
+      <div
+        className="header-map-group">
+        <Header
+          dateRange={dateRange}
+          language={language}
+          range={range}
+          sliderIndex={sliderIndex}
+          setRange={setRange}
+          setLanguage={setLanguage}
+          setSliderPosition={setSliderIndex}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+        />
+        <QuebecMap
+          data={data}
+          date={dateRange[sliderIndex]}
+          regionSelector={setSelectedRegion}
+          selectedRegion={selectedRegion}/>
+      </div>
       <SpotlightPane
         data={data}
         date={dateRange[sliderIndex]}
