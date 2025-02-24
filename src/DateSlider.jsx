@@ -71,6 +71,7 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
                 >⏮</Button>
             </div>
             {/* TODO: Finalize a speed control algorithm */}
+            {/* TODO: Finalize up/down buttons */}
             <div className="slider-speed-controls">
                 <Button
                     onPress={ () => {

@@ -5,8 +5,6 @@
 @import "./assets/Select.css";
 @import "./assets/theme.css";
 
-/* TODO: Get the sizing on these elements right, currently not working for
-phones in landscape */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
@@ -107,6 +105,7 @@ body {
 
 .map-container {
   max-height: 50vh;
+  max-width: fit-content;
   outline-style: solid;
   outline-color: var(--button-background-pressed);
 }
@@ -204,9 +203,22 @@ body {
   }
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) and (max-height: 500px){
+  .header-title {
+    font-size: smaller;
+  }
+
+  .spotlight-title h2{
+    font-size: smaller;
+  }
+
+  .spotlight-title button{
+    font-size: smaller;
+    padding: .3rem .4rem .3rem .4rem;
+  }
+
   .header-map-group{
-    flex: 2;
+    flex: 1;
   }
   .map-legend-container{
     flex: 1;
@@ -214,9 +226,17 @@ body {
 
   .map-container{
     flex: 1;
-    max-height: 65vh;
+    /* Matches legend height */
+    max-height: 13.8rem; 
   }
+  
   .spotlight-pane {
     flex: 1;
+    margin-top: .1rem;
+  }
+
+  .square {
+    height: 2.3rem;
+    width: 2.3rem;
   }
 }
