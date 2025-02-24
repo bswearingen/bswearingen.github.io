@@ -69,7 +69,7 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
                         setIsFastForwarding(false);
                         setSliderPosition(0);
                     }}
-                >⏮</Button>
+                >&#x23EE;&#xfe0e;</Button>
                 <ToggleButton
                     onChange={() => {
                         setIsFastForwarding(false);
@@ -77,7 +77,15 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
                         setIsRewinding(false);
                     }}
                     isSelected={isPlaying}
-                >⏵</ToggleButton>
+                >&#x23EF;&#xfe0e;</ToggleButton>
+                <Button
+                    onPress={() => {
+                        setIsPlaying(false);
+                        setIsRewinding(false);
+                        setIsFastForwarding(false);
+                        setSliderPosition(sliderMax);
+                    }}
+                >&#x23ED;&#xfe0e;</Button>
             </div>
             <div className="slider-speed-controls">
                 <ToggleButton
