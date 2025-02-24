@@ -49,13 +49,14 @@ body {
   align-items: top;
   outline-style: solid;
   outline-color: var(--button-background-pressed);
-  padding: .1rem;
 }
 
 .header-meta-controls {
   display: flex;
-  padding: .3rem;
-  justify-content:space-around;
+  padding: .5rem;
+  justify-content:space-between;
+  outline-style: solid;
+  outline-color: var(--button-background-pressed);
 }
 
 .header-meta-controls > button {
@@ -70,15 +71,14 @@ body {
 
 .slider-group {
   width: fit-content;
-  outline-style: solid;
-  outline-color: var(--button-background-pressed);
-  padding: 1rem;
+  padding: .5rem 1rem .5rem 1rem;
   margin: .3rem;
 }
 
 .slider-controls {
   display: flow-root;
   flex-direction: row;
+  margin-top: .5rem;
 }
 
 .slider-controls button {
@@ -142,6 +142,7 @@ body {
 .spotlight-pane {
   margin-top: 1rem;
   outline-style: solid;
+  outline-color: var(--button-background-pressed);
   max-width: 97vw;
   display: flex;
   flex-direction: column;
@@ -152,6 +153,7 @@ body {
   display: flex;
   flex-direction: row;
   outline-style: solid;
+  outline-color: var(--button-background-pressed);
   height: fit-content;
 }
 
