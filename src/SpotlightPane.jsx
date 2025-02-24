@@ -75,6 +75,7 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                                     <CustomTooltip/>
                                 }
                                 defaultIndex={isMouseInSpotlight ? null : sliderPosition}
+                                isAnimationActive={false}
                             />
                             <Area
                                 type="monotone"

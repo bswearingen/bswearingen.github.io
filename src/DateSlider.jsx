@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Button, ToggleButton, Slider, SliderTrack, SliderThumb } from "react-aria-components";
 import PropTypes from 'prop-types';
 
@@ -11,32 +11,37 @@ DateSlider.propTypes = {
     setSliderPosition: PropTypes.func
 };
 export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIsPlaying, setSliderPosition }){
-    const speed = useRef(100);
-    const advance = useRef(1);
+    const speed = useRef(160);
     const timeoutID = useRef();
+    const [isFastFowarding, setIsFastForwarding] = useState(false);
+    const [isRewinding, setIsRewinding] = useState(false);
 
     const sliderLabel = language === "english" ? "Date control slider" : "Curseur de contrôle de la date";
     function playMap(currentIndex){
         clearTimeout(timeoutID.current);
-        if(!isPlaying){
+        if(!isPlaying && !isFastFowarding && !isRewinding){
             return;
         }
 
-        const nextIndex = currentIndex + advance.current;
-        if(nextIndex < sliderMax){
+        const nextIndex = !isRewinding ? currentIndex + 1 : currentIndex - 1;
+        const timeout = isFastFowarding || isRewinding ? 40: 160;
+        if(nextIndex < sliderMax && nextIndex >= 0){
             setSliderPosition(nextIndex);
             timeoutID.current = setTimeout(() => {
                 playMap(nextIndex);
-            }, speed.current);
+            }, timeout);
         } else {
-            setSliderPosition(sliderMax);
+            const clamp = !isRewinding ? sliderMax : 0;
+            setSliderPosition(clamp);
             setIsPlaying(false);
+            setIsFastForwarding(false);
+            setIsRewinding(false);
         }
     }
     
     useEffect(() => {
         playMap(sliderIndex);
-    }, [isPlaying]);
+    }, [isPlaying, isFastFowarding, isRewinding]);
 
     return <div className="slider-group">
         <Slider
@@ -57,48 +62,40 @@ export function DateSlider( { isPlaying, language, sliderIndex, sliderMax, setIs
             <div
                 className="slider-play-controls"
             >
-                <ToggleButton
-                    onPress={() => {
-                        setIsPlaying(cur => !cur);
-                    }}
-                    isSelected={isPlaying}
-                >⏯</ToggleButton>
                 <Button
                     onPress={() => {
                         setIsPlaying(false);
+                        setIsRewinding(false);
+                        setIsFastForwarding(false);
                         setSliderPosition(0);
                     }}
                 >⏮</Button>
+                <ToggleButton
+                    onChange={() => {
+                        setIsFastForwarding(false);
+                        setIsPlaying(cur => !cur);
+                        setIsRewinding(false);
+                    }}
+                    isSelected={isPlaying}
+                >⏵</ToggleButton>
             </div>
-            {/* TODO: Finalize a speed control algorithm */}
-            {/* TODO: Finalize up/down buttons */}
             <div className="slider-speed-controls">
-                <Button
-                    onPress={ () => {
-                        if(advance.current > 1){
-                            advance.current = 1;
-                        } else {
-                            speed.current = speed.current * 10;
-                        }
+                <ToggleButton
+                    onChange={() => {
+                        setIsRewinding(cur => !cur);
+                        setIsFastForwarding(false);
+                        setIsPlaying(false);
                     }}
-                >⏷</Button>
-                <Button
-                    onPress={ () => {
-                        advance.current = 1;
-                        speed.current = 100;
-                        playMap(sliderIndex);
+                    isSelected={isRewinding}
+                >&#x23EA;&#xfe0e;</ToggleButton>
+                <ToggleButton
+                    onChange={() => {
+                        setIsFastForwarding(cur => !cur);
+                        setIsPlaying(false);
+                        setIsRewinding(false);
                     }}
-                >↺</Button>
-                <Button
-                    onPress={ () => {
-                        if(speed.current > 1){
-                            speed.current = Math.floor(speed.current / 10);
-                        } else {
-                            advance.current += 1;
-                        }
-                        playMap(sliderIndex);
-                    }}
-                >⏶</Button>
+                    isSelected={isFastFowarding}
+                >&#x23E9;&#xfe0e;</ToggleButton>
             </div>
         </div>
     </div>
