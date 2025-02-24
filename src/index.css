@@ -1,0 +1,147 @@
+@import "./assets/Button.css";
+@import "./assets/ToggleButton.css";
+@import "./assets/Slider.css";
+@import "./assets/DateRangePicker.css";
+@import "./assets/Select.css";
+@import "./assets/theme.css";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  max-width: fit-content;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  outline-style: solid;
+  outline-color: var(--medium-dark);
+  padding: .3rem;
+}
+
+.header-meta-controls {
+  display: flex;
+  align-items: top;
+  padding: .3rem;
+}
+
+.header-meta-controls > .react-aria-DateRangePicker{
+  justify-self: right;
+}
+
+.header-meta-controls > button {
+  margin-right: .5rem;
+  min-width: 6rem;
+  max-height: fit-content;
+}
+
+.header-title {
+  margin: 0px;
+}
+
+.slider-group {
+  width: fit-content;
+  outline-style: solid;
+  outline-color: var(--medium-dark);
+  padding: 1rem;
+  margin: .3rem;
+}
+
+.slider-controls {
+  display: flow-root;
+  flex-direction: row;
+}
+
+.slider-controls button {
+  min-height: 3rem;
+}
+
+.slider-play-controls {
+  float: left;
+}
+
+.slider-speed-controls {
+  float: right;
+}
+
+.map-spotlight-container {
+  display: flow-root;
+  margin-top: 1rem;
+}
+
+.map-legend-container {
+  display: flex;
+}
+
+.map-container {
+  max-height: 50vh;
+  outline-style: solid;
+  outline-color: var(--medium-dark);
+}
+
+.legend {
+  padding: 0rem;
+  margin: 0rem 0rem 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  min-width: fit-content;
+  max-height: fit-content;
+  outline-style: solid;
+  outline-color: var(--medium-light);
+}
+
+.legend-entry {
+  display: flex;
+  min-width: fit-content;
+}
+
+.legendText{
+  color: var(--text-color);
+  margin: 0rem .3rem 0rem .3rem;
+  align-content: center;
+}
+
+.square {
+  height: 3rem;
+  width: 3rem;
+}
+
+.spotlight-pane {
+  margin-top: 1rem;
+  outline-style: solid;
+  max-width: 97vw;
+}
+
+.spotlight-title {
+  display: flex;
+  flex-direction: row;
+  outline-style: solid;
+}
+
+.spotlight-title button {
+  max-height: fit-content;
+  margin: .3rem .3rem 0.3rem .3rem;
+}
+
+.spotlight-title h2 {
+  margin: .3rem .3rem 0.3rem .3rem;
+}
+
+.recharts-dot {
+  fill: var(--dark);
+}
