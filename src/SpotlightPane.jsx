@@ -52,13 +52,13 @@ export function SpotlightPane( { data, selectedRegion, sliderPosition, setSlider
                     >✖</Button>
                     <h2>{title}</h2>
                 </div>
-                <div className='spotlight-graph'>
+                <div className='spotlight-graph'
+                    onMouseLeave={() => {setIsMouseInSpotlight(false);}}
+                    onMouseEnter={() => {setIsMouseInSpotlight(true);}}>
                     <ResponsiveContainer width="99%" height="99%">
                         <AreaChart 
                             data={region_data} 
                             margin={{ top: 20, right: 10, }}
-                            onMouseMove={() => {setIsMouseInSpotlight(true);}}
-                            onMouseLeave={() => {setIsMouseInSpotlight(false);}}
                             onClick={(e) => {
                                 if(Object.keys(e).length > 0){
                                     setSliderPosition(e.activeTooltipIndex);
