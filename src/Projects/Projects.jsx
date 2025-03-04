@@ -1,7 +1,7 @@
 function Projects() {
     return (
       <ul>
-        <li>COVID-Tracker</li>
+        <li>TODO - Write a little summary of the project and motivations</li>
       </ul>
     )
   }
