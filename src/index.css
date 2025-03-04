@@ -2,7 +2,7 @@
 @import "./assets/ToggleButtonGroup.css";
 @import "./assets/theme.css";
 
-:root {
+#root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
   line-height: 1.5;
@@ -16,18 +16,18 @@
 #root {
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-body {
   height: 96vh;
-  margin: 2vh 1vw 2vh 1vw;
 }
 
 .site-header {
   display: flex;
   align-content: baseline;
-  justify-content:space-between;
+  justify-content: space-between;
+  font-size: small;
+}
+
+.site-header h1 {
+  margin: .5rem .2rem .5rem .2rem;
 }
 
 .react-aria-Tabs{
@@ -36,11 +36,18 @@ body {
 
 .react-aria-TabPanel {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {
-  body {
-    height: 85vh;
-    margin: 2vh 3vw 2vh 3vw;
+}
+
+@media only screen and (orientation: landscape) and (max-height: 500px){
+  .site-header{
+    font-size: x-small;
+  }
+  .site-header button{
+    font-size: small;
   }
 }

@@ -21,7 +21,7 @@ export function Header({ dateRange, language, range, sliderIndex, setRange, setS
     return <>
         <div className='header'>
             <div className='header-controls'>
-                <div className='header-meta-controls'>
+                <div className='header-date-controls'>
                     <DateRangePicker
                         aria-label={dateSelectorLabel}
                         value={range}

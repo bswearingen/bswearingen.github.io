@@ -1,31 +1,5 @@
-@import "./../assets/Button.css";
-@import "./../assets/ToggleButton.css";
 @import "./../assets/Slider.css";
 @import "./../assets/DateRangePicker.css";
-@import "./../assets/Select.css";
-@import "./../assets/theme.css";
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: var(--text-color);
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-body {
-  height: 96vh;
-  margin: 2vh 1vw 2vh 1vw;
-}
 
 .header-map-group {
   display: flex;
@@ -51,10 +25,10 @@ body {
   outline-color: var(--button-background-pressed);
 }
 
-.header-meta-controls {
+.header-date-controls {
   display: flex;
   padding: .5rem;
-  justify-content:space-between;
+  justify-content: flex-end;
   outline-style: solid;
   outline-color: var(--button-background-pressed);
 }
@@ -119,7 +93,7 @@ body {
   max-height: fit-content;
   height: -moz-max-content;
   outline-style: solid;
-  outline-color: var(--overlay-background);
+  outline-color: var(--button-background-pressed);
   justify-content: start;
 }
 
@@ -169,7 +143,7 @@ body {
 }
 
 .spotlight-graph {
-  flex: 1;
+  flex: 1 0 50px;
 }
 
 .recharts-dot {
@@ -178,11 +152,11 @@ body {
 
 @media only screen and (max-width: 600px) {
   .header-title {
-    font-size: small;
+    font-size: smaller;
   }
 
   .spotlight-title h2{
-    font-size: small;
+    font-size: smaller;
   }
 
   .slider-controls button {
@@ -193,11 +167,6 @@ body {
 
   .label {
     font-size: smaller;
-  }
-
-  body {
-    height: 85vh;
-    margin: 2vh 3vw 2vh 3vw;
   }
 
   .header-map-group{
@@ -225,6 +194,21 @@ body {
     font-size: smaller;
   }
 
+.slider-group {
+  padding: 0rem 1rem .3rem 1rem;
+  margin: 0rem;
+}
+
+.slider-controls {
+  margin-top: .1rem;
+}
+
+  .slider-controls button {
+    min-height: 2rem;
+    height: 2rem;
+    line-height: 1rem;
+  }
+
   .spotlight-title h2{
     font-size: smaller;
   }
@@ -236,7 +220,6 @@ body {
 
   .header-map-group{
     flex: 1;
-    margin-bottom: 1rem;
   }
   .map-legend-container{
     flex: 1;
@@ -244,8 +227,7 @@ body {
 
   .map-container{
     flex: 1;
-    /* Matches legend height */
-    max-height: 13.8rem; 
+    max-height: 10.26rem; 
   }
   
   .spotlight-pane {
@@ -254,7 +236,7 @@ body {
   }
 
   .square {
-    height: 2.3rem;
-    width: 2.3rem;
+    height: 1.71rem;
+    width: 1.71rem;
   }
 }

@@ -2,6 +2,7 @@ import {ToggleButtonGroup, ToggleButton, RouterProvider, Tabs, TabList, Tab, Tab
 import { useNavigate, useLocation, Routes, Route } from 'react-router';
 import { useState } from "react";
 import Resume from './Resume/Resume.jsx'
+import Projects from './Projects/Projects.jsx';
 import CovidTracker from './CovidTracker/CovidTracker.jsx'
 
 function AppTabs({ language }){
@@ -12,11 +13,13 @@ function AppTabs({ language }){
       <Tabs selectedKey={pathname}>
         <TabList aria-label="Tabs">
           <Tab id="/" href="/">{language === "french" ? "CV" : "Resume"}</Tab>
+          <Tab id="/projects" href="/projects">{language === "french" ? "Mes projets" : "Projects"}</Tab>
           <Tab id="/covid-tracker" href="/covid-tracker">{language === "french" ? "La COVID-19 au Québec" : "COVID in Quebec"}</Tab>
         </TabList>
         <TabPanel id={pathname}>
           <Routes>
             <Route path="/" element={<Resume language={language}/>} />
+            <Route path="/projects" element={<Projects language={language} />} />
             <Route path="/covid-tracker" element={<CovidTracker language={language} />} />
           </Routes>
         </TabPanel>
