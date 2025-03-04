@@ -1,3 +1,7 @@
+@import "./assets/Tabs.css";
+@import "./assets/ToggleButtonGroup.css";
+@import "./assets/theme.css";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
@@ -18,6 +22,20 @@
 body {
   height: 96vh;
   margin: 2vh 1vw 2vh 1vw;
+}
+
+.site-header {
+  display: flex;
+  align-content: baseline;
+  justify-content:space-between;
+}
+
+.react-aria-Tabs{
+  height: inherit;
+}
+
+.react-aria-TabPanel {
+  flex: 1;
 }
 
 @media only screen and (max-width: 600px) {

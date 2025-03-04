@@ -6,7 +6,7 @@ import { today } from '@internationalized/date';
 import { Header } from './Header.jsx';
 import './covidTracker.css';
 
-function CovidTracker() {
+function CovidTracker({ language }) {
   const [data, setData] = useState([]);
   const [sliderIndex, setSliderIndex] = useState(0);
     // Properties:
@@ -14,7 +14,6 @@ function CovidTracker() {
     //  - RSS_nom
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [language, setLanguage] = useState("french");
   const [range, setRange] = useState({
     start: today().subtract({years: 1}),
     end: today()
@@ -55,7 +54,6 @@ function CovidTracker() {
           range={range}
           sliderIndex={sliderIndex}
           setRange={setRange}
-          setLanguage={setLanguage}
           setSliderPosition={setSliderIndex}
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}

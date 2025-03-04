@@ -8,14 +8,13 @@ Header.propTypes = {
     language: PropTypes.string,
     range: PropTypes.object,
     sliderIndex: PropTypes.number,
-    setLanguage: PropTypes.func,
     setRange: PropTypes.func,
     setSliderPosition: PropTypes.func,
     isPlaying: PropTypes.bool,
     setIsPlaying: PropTypes.func
 }
 
-export function Header({ dateRange, language, range, sliderIndex, setLanguage, setRange, setSliderPosition, isPlaying, setIsPlaying }) {
+export function Header({ dateRange, language, range, sliderIndex, setRange, setSliderPosition, isPlaying, setIsPlaying }) {
     const title = language === "english" ? "Number of COVID hospitalizations for: " : "Nombre d'hospitalisations liées à la COVID au ";
     const loading = language === "english" ? "Loading..." : "La page se charge...";
     const dateSelectorLabel = language === "english" ? "Date Range Selector" : "Sélecteur de plage de dates";
@@ -23,12 +22,6 @@ export function Header({ dateRange, language, range, sliderIndex, setLanguage, s
         <div className='header'>
             <div className='header-controls'>
                 <div className='header-meta-controls'>
-                    <Button
-                        onPress={ () => {
-                        setLanguage((cur) => cur === "english" ? "french" : "english");
-                    }}>
-                        {language === "english" ? "Français" : "English"}
-                    </Button>
                     <DateRangePicker
                         aria-label={dateSelectorLabel}
                         value={range}

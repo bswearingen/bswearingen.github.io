@@ -144,6 +144,7 @@ body {
   outline-style: solid;
   outline-color: var(--button-background-pressed);
   max-width: 97vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -169,8 +170,6 @@ body {
 
 .spotlight-graph {
   flex: 1;
-  min-height: 100px;
-  height: 3vh;
 }
 
 .recharts-dot {
