@@ -23,7 +23,7 @@
 
 .resume h5{
     border-bottom-style: solid;
-    border-color: var(--green);
+    border-color: var(--off-accent-color);
     margin-top: .8rem;
     margin-bottom: 1rem;
 }

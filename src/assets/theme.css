@@ -25,6 +25,7 @@
 /* Semantic colors */
 :root {
   --accent-color: var(--green);
+  --off-accent-color: var(--yellow);
   --text-color: var(--dark);
   --background-color: var(--light);
   --button-background: var(--medium-light);
@@ -50,6 +51,7 @@
 @media (prefers-color-scheme: dark){
   :root {
     --accent-color: var(--yellow);
+    --off-accent-color: var(--green);
     --text-color: var(--light);
     --background-color: var(--dark);
     --button-background: var(--medium-dark);
