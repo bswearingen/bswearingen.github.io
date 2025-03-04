@@ -1,0 +1,34 @@
+@import "../assets/theme.css";
+
+.resume h2{
+    border-bottom-style: solid;
+    border-color: var(--accent-color);
+    margin-top: 0rem;
+    margin-bottom: .5rem;
+}
+
+.resume h3{
+    border-left-style: solid;
+    border-color: var(--orange);
+    padding-left: .5rem;
+    margin-top: .5rem;
+    margin-bottom: 0rem;
+}
+
+.resume h4{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    font-weight: normal;
+}
+
+.resume h5{
+    border-bottom-style: solid;
+    border-color: var(--green);
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+.resume ul{
+    margin-top: 0rem;
+    margin-bottom: .3rem;
+}

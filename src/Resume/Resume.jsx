@@ -1,21 +1,29 @@
+import './resume.css';
+
 function Resume({language}) {
   if(language === "english"){
     return (
-      <div>
+      <div className='resume'>
         <h2>Education</h2>
         <h3>Bachelor in Computer Engineering</h3>
         <h4>Graduated Dec. 2014</h4>
-        <p>Completed courses in Computer Engineering, Digital System Design, Microelectronics, Microprocessors, Algorithms, Data Structures, HCI, AI, Software Validation, and Computer Architecture</p>
+        <ul>
+        <li>Completed courses in Computer Engineering, Digital System Design, Microelectronics, Microprocessors, Algorithms, Data Structures, HCI, AI, Software Validation, and Computer Architecture</li>
+        </ul>
         <h5>McGill University, Montreal, Quebec</h5>
 
         <h3>Francization Course</h3>
         <h4>March 2024 – October 2024</h4>
-        <p>Fulltime course to achieve conversational fluency in French</p>
-        <p>Recognized for community involvement</p>
+        <ul>
+          <li>Fulltime course to achieve conversational fluency in French</li>
+          <li>Recognized for community involvement</li>
+        </ul>
         <h5>CEA Outremont, Outremont, Quebec</h5>
 
         <h2>Programming Experience</h2>
-        <p>C#, JavaScript, Python, SQL Server, React, NoSQL (Cassandra), Apache Kafka</p>
+        <ul>
+          <li>C#, JavaScript, Python, SQL Server, React, NoSQL (Cassandra), Apache Kafka</li>
+        </ul>
 
         <h2>Work Experience</h2>
         <h3>Software Developer - Yelp</h3>
@@ -43,6 +51,7 @@ function Resume({language}) {
             </ul>
           </li>
         </ul>
+        <h5>(Remote, Montreal, QC)</h5>
 
         <h3>Dialog Developer - Cerence Inc.</h3>
         <h4>December 2017 - April 2020</h4>
@@ -61,6 +70,7 @@ function Resume({language}) {
             </ul>
           </li>
         </ul>
+        <h5>(Montreal, QC)</h5>
 
         <h3>Software Developer I - AZUR Group</h3>
         <h4>September 2015 - December 2017</h4>
@@ -70,25 +80,32 @@ function Resume({language}) {
           <li>Developer on the internal Salesforce team</li>
           <li>Developer on a Treasury Management and Cashflow Forecasting system</li>
         </ul>
+        <h5>(Montreal, QC)</h5>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className='resume'>
         <h2>Formation</h2>
         <h3>Baccalauréat en ingénierie informatique</h3>
         <h4>Diplôme obtenu en décembre 2014</h4>
-        <p>Cours : génie informatique, conception de systèmes numériques, microélectronique, microprocesseurs, algorithmes, structures de données, interaction personne-machine, IA, validation de logiciels et architecture d’ordinateur</p>
+        <ul>
+        <li>Cours : génie informatique, conception de systèmes numériques, microélectronique, microprocesseurs, algorithmes, structures de données, interaction personne-machine, IA, validation de logiciels et architecture d’ordinateur</li>
+        </ul>
         <h5>Université McGill (Montréal, Québec)</h5>
 
         <h3>Cours de francisation</h3>
         <h4>De mars à octobre 2024</h4>
-        <p>Cours à temps plein pour apprendre à parler et écrire couramment le français</p>
-        <p>Marque de reconnaissance pour implication communautaire</p>
+        <ul>
+          <li>Cours à temps plein pour apprendre à parler et écrire couramment le français</li>
+          <li>Marque de reconnaissance pour implication communautaire</li>
+        </ul>
         <h5>CEA Outremont (Outremont, Québec)</h5>
 
         <h2>Expérience en programmation</h2>
-        <p>C#, JavaScript, Python, SQL Server, React, NoSQL (Cassandra), Apache Kafka</p>
+        <ul>
+          <li>C#, JavaScript, Python, SQL Server, React, NoSQL (Cassandra), Apache Kafka</li>
+        </ul>
 
         <h2>Expérience professionnelle</h2>
         <h3>Développeur de logiciels - Yelp</h3>
@@ -116,6 +133,7 @@ function Resume({language}) {
             </ul>
           </li>
         </ul>
+        <h5> (télétravail, Montréal, Québec)</h5>
 
         <h3>Développeur – dialogue - Cerence Inc.</h3>
         <h4>De décembre 2017 à avril 2020</h4>
@@ -134,8 +152,9 @@ function Resume({language}) {
             </ul>
           </li>
         </ul>
+        <h5> (Montréal, Québec)</h5>
 
-        <h3>Développeur de logiciels I - AZUR Group</h3>
+        <h3>Développeur de logiciels I - Groupe AZUR</h3>
         <h4>De septembre 2015 à décembre 2017</h4>
         <ul>
           <li>Développeur principal – petite équipe, suite de veille stratégique Microsoft (SSIS, SSAS, SSRS)</li>
@@ -143,6 +162,7 @@ function Resume({language}) {
           <li>Développeur – équipe Salesforce à l’interne</li>
           <li>Développeur – système de gestion et de prévisions de trésorerie</li>
         </ul>
+        <h5> (Montréal, Québec)</h5>
       </div>
     );
   }
