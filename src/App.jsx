@@ -15,6 +15,7 @@ function AppTabs({ language }){
           <Tab id="/" href="/">{language === "french" ? "CV" : "Resume"}</Tab>
           {/* <Tab id="/projects" href="/projects">{language === "french" ? "Mes projets" : "Projects"}</Tab> */}
           <Tab id="/covid-tracker" href="/covid-tracker">{language === "french" ? "La COVID-19 au Québec" : "COVID in Quebec"}</Tab>
+          <Tab id="/github" href="https://github.com/bswearingen" target="_blank">Github</Tab>
         </TabList>
         <TabPanel id={pathname}>
           <Routes>
